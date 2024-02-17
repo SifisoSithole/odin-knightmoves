@@ -1,21 +1,22 @@
 /**
- * Prints the result of the knight's moves solution.
- * @param {Array} path - The path representing the solution.
- */
-function printResult(path) {
-    console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
-    for (let i = 0; i < path.length; i++) {
-        console.log(path[i]);
-    }
-}
-
-/**
  * Finds the shortest knight path from source to destination.
  * @param {Array} src - The source coordinates [x, y].
  * @param {Array} dest - The destination coordinates [x, y].
  * @returns {Array} - The path as an array of coordinates.
  */
 function knightmovesSolution(src, dest) {
+
+    /**
+     * Prints the result of the knight's moves solution.
+     * @param {Array} path - The path representing the solution.
+     */
+    function printResult(path) {
+        console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
+        for (let i = 0; i < path.length; i++) {
+            console.log(path[i]);
+        }
+    }
+
     // Check if the source and destination coordinates are valid
     if (
         src[0] < 0 || src[0] > 7 || src[1] < 0 || src[1] > 7 ||
@@ -60,6 +61,7 @@ function knightmovesSolution(src, dest) {
                 queue.push(newPath);
                 // If destination reached, return the path
                 if (xNew === dest[0] && yNew === dest[1]) {
+                    printResult(newPath);
                     return newPath;
                 }
             }
@@ -68,3 +70,5 @@ function knightmovesSolution(src, dest) {
     // If destination cannot be reached, return an empty path
     return [];
 }
+
+module.exports = knightmovesSolution;
